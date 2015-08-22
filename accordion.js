@@ -1,5 +1,5 @@
-import domUtils from "plugins/domUtils";
-import objectUtils from "plugins/objectUtils";
+import domUtils from "domUtils";
+import objectUtils from "objectUtils";
 
 let accordion = function(element, options) {
 
