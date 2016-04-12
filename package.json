@@ -2,8 +2,8 @@
 	"name": "accordion",
 	"jspm": {
 		"dependencies": {
-			"domUtils": "github:DEGJS/domUtils@master",
-			"objectUtils": "github:DEGJS/objectUtils@master"
+			"domUtils": "github:DEGJS/domUtils@1.0.0",
+			"objectUtils": "github:DEGJS/objectUtils@1.0.0"
 		},
 		"format": "es6",
   		"registry": "jspm"
