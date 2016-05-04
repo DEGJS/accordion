@@ -1,3 +1,4 @@
+/* */ 
 import domUtils from "domUtils";
 import objectUtils from "objectUtils";
 
@@ -37,11 +38,11 @@ let accordion = function(element, options) {
 	};
 
 	function bindEvents() {
-		document.addEventListener('click', onDocumentClick);
+		element.addEventListener('click', onDocumentClick);
 	};
 
 	function unbindEvents() {
-		document.removeEventListener('click', onDocumentClick);
+		element.removeEventListener('click', onDocumentClick);
 	};
 
 	function onDocumentClick(e) {
@@ -63,40 +64,47 @@ let accordion = function(element, options) {
 		accordionSections.forEach(function(section, index) {
 			let sectionContent = Array.prototype.slice.call(section.children),
 				sectionContentWrapper = domUtils.createElement('div', settings.accordionContentWrapperClass),
-				sectionHeadingEl = section.querySelector('.' + settings.accordionHeadingClass),
-				sectionTriggerLink = sectionHeadingEl.getAttribute('href'),
-				sectionTriggerTarget = '_self',
-				sectionTriggerEl = domUtils.createElement('a', settings.accordionTriggerClass);
+				sectionHeadingEl = section.querySelector('.' + settings.accordionHeadingClass);
 
-			if (sectionTriggerLink === null) {
-				sectionTriggerLink = '#';
-			} else {
-				if (sectionHeadingEl.getAttribute('target') !== null) {
-					sectionTriggerTarget = sectionHeadingEl.getAttribute('target');
+			if (sectionHeadingEl) {
+				let sectionTriggerLink = sectionHeadingEl.getAttribute('href'),
+					sectionTriggerTarget = '_self',
+					sectionTriggerEl = domUtils.createElement('a', settings.accordionTriggerClass);
+
+				if (sectionTriggerLink === null) {
+					sectionTriggerLink = '#';
+				} else {
+					if (sectionHeadingEl.getAttribute('target') !== null) {
+						sectionTriggerTarget = sectionHeadingEl.getAttribute('target');
+					}
 				}
-			}
-			sectionTriggerEl.setAttribute('href', sectionTriggerLink);
-			sectionTriggerEl.setAttribute('target', sectionTriggerTarget);
-			sectionTriggerEl.textContent = sectionHeadingEl.textContent;
-			
-			if (settings.closedOnInit) {
-				setToClosed(section);
-			} else {
-				if (settings.openSlideIndexes.indexOf(index) === -1) {
+				sectionTriggerEl.setAttribute('href', sectionTriggerLink);
+				sectionTriggerEl.setAttribute('target', sectionTriggerTarget);
+				sectionTriggerEl.textContent = sectionHeadingEl.textContent;
+				
+				if (settings.closedOnInit) {
 					setToClosed(section);
 				} else {
-					if (settings.oneAtATime) {
-						if (oneAtATimeSet) {
-							setToClosed(section);
-						} else {
-							oneAtATimeSet = true;
+					if (settings.openSlideIndexes.indexOf(index) === -1) {
+						setToClosed(section);
+					} else {
+						if (settings.oneAtATime) {
+							if (oneAtATimeSet) {
+								setToClosed(section);
+							} else {
+								oneAtATimeSet = true;
+							}
 						}
 					}
 				}
+				domUtils.wrapElements(sectionContent, sectionContentWrapper);
+				section.insertBefore(sectionTriggerEl, section.firstChild);
+				domUtils.addCssClasses(sectionHeadingEl, [settings.accordionHiddenClass]);
+			} else {
+				console.log('No section headings found.');
 			}
-			domUtils.wrapElements(sectionContent, sectionContentWrapper);
-			section.insertBefore(sectionTriggerEl, section.firstChild);
-			domUtils.addCssClasses(sectionHeadingEl, [settings.accordionHiddenClass]);
+
+			
 		});
 		if (settings.onSectionWrapComplete !== null) {
 			settings.onSectionWrapComplete();
