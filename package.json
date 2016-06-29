@@ -1,11 +1,38 @@
 {
-	"name": "accordion",
-	"jspm": {
-		"dependencies": {
-			"domUtils": "github:DEGJS/domUtils@1.0.1",
+    "name": "accordion",
+    "version": "1.0.2",
+    "description": "An accordion plugin, written in ES6 syntax.",
+    "keywords": [
+        "accordion",
+        "DEGJS"
+    ],
+    "author": {
+        "name": "Aaron Ladage",
+        "email": "aladage@degdigital.com",
+        "url": "http://aaronladage.com"
+    },
+    "contributors": [
+        {
+            "name": "Ryan Heap",
+            "email": "rheap@degdigital.com"
+        }
+    ],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DEGJS/accordion.git"
+    },
+    "bugs": "https://github.com/DEGJS/accordion/issues",
+    "jspm": {
+        "registry": "jspm",
+        "format": "es6",
+        "main": "accordion.js",
+        "directories": {
+            "lib": "src"
+        },
+        "dependencies": {
+            "domUtils": "github:DEGJS/domUtils@1.0.2",
 			"objectUtils": "github:DEGJS/objectUtils@1.0.0"
-		},
-		"format": "es6",
-  		"registry": "jspm"
-	}
+        }
+    }
 }
