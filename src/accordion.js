@@ -1,6 +1,5 @@
-/* */ 
-import domUtils from "domUtils";
-import objectUtils from "objectUtils";
+import domUtils from "DEGJS/domUtils";
+import objectUtils from "DEGJS/objectUtils";
 
 let accordion = function(element, options) {
 

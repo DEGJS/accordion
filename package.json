@@ -1,6 +1,6 @@
 {
     "name": "accordion",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "An accordion plugin, written in ES6 syntax.",
     "keywords": [
         "accordion",
@@ -31,8 +31,8 @@
             "lib": "src"
         },
         "dependencies": {
-            "domUtils": "github:DEGJS/domUtils@1.0.2",
-			"objectUtils": "github:DEGJS/objectUtils@1.0.0"
+            "DEGJS/domUtils": "github:DEGJS/domUtils@^1.0.2",
+			"DEGJS/objectUtils": "github:DEGJS/objectUtils@^1.0.0"
         }
     }
 }
