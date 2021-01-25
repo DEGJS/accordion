@@ -1,6 +1,8 @@
 # Accordion
 An accordion plugin, written in ES6 syntax.
 
+**THIS REPOSITORY IS NO LONGER MAINTAINED**
+
 ## Sample Usage
 ``` javascript
 let accordionInst = accordion(element, accordionOptions);
